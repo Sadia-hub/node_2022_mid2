@@ -7,7 +7,7 @@ const login_page = (req,res)=>{
 }
 
 const signup_page = (req,res) =>{
-    res.render("signup",{title:"Sign Up"})
+    res.render("signup",{title:"Sign Up Page"})
 }
 
 const users_page = async(req, res) =>{
