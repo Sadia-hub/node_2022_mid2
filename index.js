@@ -7,11 +7,12 @@ const cutomerRouter = require('./routes/customer');
 const userRouter = require('./routes/user');
 
 require("dotenv").config();
-const path = require("ejs");
+const path = require("path");
 const ejs = require("ejs");
 
 app.set('view engine','ejs')
 
+app.use("/",express.static(path.resolve('assets/css')))
 app.use(express.urlencoded({extended:true}))
 app.use(cutomerRouter);
 app.use(userRouter)

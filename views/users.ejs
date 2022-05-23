@@ -1,10 +1,10 @@
 
 <%-include("header")-%>
 
-<h2> All Users Data</h2>
+<h2 class="text-center center"> All Users Data</h2>
 
 <% if(users){%>
-<table>
+<table class="table">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -20,8 +20,8 @@
                 <td><%=i%></td>
                 <td><%=user.name%></td>
                 <td><%=user.email%></td>
-                <td><a href="/user/view/<%=user._id%>" type="button"> View </a></td>
-                <td><a href="/user/delete/<%=user._id%>" type="button">Delete</a></td>
+                <td><a href="/user/view/<%=user._id%>" type="button" class="btn btn-primary"> View </a></td>
+                <td><a href="/user/delete/<%=user._id%>" type="button" class="btn btn-primary">Delete</a></td>
             </tr>
         <%})%>
     </tbody>
