@@ -1,0 +1,31 @@
+
+<%-include("header")-%>
+
+<h2> All Users Data</h2>
+
+<% if(users){%>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">email</th>
+            <th scope="col">View</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.forEach((user,i)=>{%>
+            <tr>
+                <td><%=i%></td>
+                <td><%=user.name%></td>
+                <td><%=user.email%></td>
+                <td><a href="/user/view/<%=user._id%>" type="button"> View </a></td>
+                <td><a href="/user/delete/<%=user._id%>" type="button">Delete</a></td>
+            </tr>
+        <%})%>
+    </tbody>
+</table>
+<%}else{%>
+    <h2>No Users </h2>
+<%}%>

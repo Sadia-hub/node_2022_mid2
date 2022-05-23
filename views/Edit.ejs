@@ -1,0 +1,23 @@
+<%-include("header")-%>
+
+<div>
+    <h2>Signup Page</h2>
+</div>
+<div>
+    <form method="post" action="/user/update/<%=id%>">
+        <div>
+            <input name="name" id="name" type="text" placeholder="name" value=<%=name%> >
+        </div>
+        <div>
+            <input name="email" id="email" type="email" placeholder="email" value=<%=email%> >
+        </div>
+       
+        <div>
+            <input name="password" id="password" type="password" placeholder="password" value=<%=password%> >
+        </div>
+        <div>
+            <input type="submit" value="Edit">
+        </div>
+        
+    </form>
+</div>
