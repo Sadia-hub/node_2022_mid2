@@ -1,5 +1,5 @@
 const userModel = require("../db/models/User")
-
+const becrypt = require("bcrypt")
 
 //Pages
 const login_page = (req,res)=>{
@@ -12,6 +12,8 @@ const signup_page = (req,res) =>{
 
 const users_page = async(req, res) =>{
     try{
+        
+
         const users = await userModel.find({})
         res.render("users",{title:"Users", users})
         console.log(users)
@@ -23,17 +25,29 @@ const users_page = async(req, res) =>{
 
 const getUser = async (req, res) =>{
     console.log(req.body)
-    const user = await userModel.findOne(req.body)
+
+    let {password, name, email} = req.body
+
+    
+
+    const user = await userModel.findOne({email:req.body.email})
     if(!user){
         return res.send("Either username or password is not available")
     }
-    console.log(user)
-    res.render("user",{name:user.name, email:user.email,})
+    becrypt.compare(password, user.password, (error, matched)=>{
+        if(error){
+            return res.send("Either username or password is not available")
+        }
+        console.log(user)
+        res.render("user",{name:user.name, email:user.email,})
+    })
+    
 }
 
 
 const insert_user = async (req, res) =>{
     try{
+        console.log(req.body)
         const user = await userModel.create(req.body)
         console.log(user)
         //res.send("insert user")
